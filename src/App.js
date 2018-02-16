@@ -15,14 +15,10 @@ import pick from 'lodash/pick';
 
 import { auth, database, googleAuthProvider } from './components/firebase';
 
-
 import Bar from "./components/Bar";
 import Modal from "./components/Modal";
 import './App.css';
 
-// This replaces the textColor value on the palette
-// and then update the keys for each component that depends on it.
-// More on Colors: http://www.material-ui.com/#/customization/colors
 const muiTheme = getMuiTheme({
   // palette: {
   //   textColor: blueGrey600,
@@ -167,9 +163,6 @@ class App extends Component {
       database.ref(`users/${this.state.user.uid}/exercises/${this.todaysDate}`)
         .set({ repetitions: repetitions, timer: timerValue, time: Date.now() });
     }
-
-
-
   }
 
   buttonClickReset(e) {
