@@ -19,6 +19,7 @@ import './App.css';
 
 import AppBarContainer from "./containers/AppBarContainer";
 import DrawerContainer from "./containers/DrawerContainer";
+import MainContentContainer from "./containers/MainContentContainer";
 
 const muiTheme = getMuiTheme({
   // palette: {
@@ -200,21 +201,11 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
 
-          {/* <AppBar
-            title="Burpee plank timer"
-            titleStyle={{ textAlign: "left" }}
-            onLeftIconButtonClick={this.handleToggle}
-            iconElementRight={
-              user
-                ? <FlatButton label={"Sign Out " + user.displayName.split(" ")[0]} onClick={this.signOut} />
-
-                : <FlatButton label="Sign in" onClick={() => auth.signInWithPopup(googleAuthProvider)} />
-            }
-          /> */}
-
           <AppBarContainer />
 
-          <div className="mainContent" style={{ backgroundColor: bgColor }}>
+
+          <MainContentContainer/>
+          {/* <div className="mainContent" style={{ backgroundColor: bgColor }}>
             <div className="mainConfig">
 
               <div>
@@ -232,9 +223,7 @@ class App extends Component {
                 }
 
               </div>
-
             </div>
-
             <div className="mainButton">
               <RaisedButton
                 buttonStyle={{ height: 150, width: 150 }}
@@ -244,7 +233,7 @@ class App extends Component {
                 disabled={this.state.runTimer}
               />
             </div>
-          </div>
+          </div> */}
 
           {/* <Drawer
             docked={false}
