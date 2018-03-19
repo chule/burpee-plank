@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { CHANGE_DRAWER } from "../actions";
+import { CHANGE_DRAWER, CHANGE_MODAL, TIMER_VALUE_ADD, TIMER_VALUE_REMOVE } from "../actions";
 
 const otherReducer = (state = [], action) => {
     return state;
@@ -14,9 +14,31 @@ const changeDrawer = (state = false, action) => {
     }
 }
 
+const changeModal = (state = false, action) => {
+    switch (action.type) {
+        case CHANGE_MODAL:
+            return !state;
+        default:
+            return state;
+    }
+}
+
+const timerValue = (state = 10, action) => {
+    switch (action.type) {
+        case TIMER_VALUE_ADD:
+            return state + 1;
+        case TIMER_VALUE_REMOVE:
+            return state - 1;
+        default:
+            return state;
+    }
+}
+
 const rootReducer = combineReducers({
     otherReducer,
-    changeDrawer
+    changeDrawer,
+    changeModal,
+    timerValue
 })
 
 

@@ -1,98 +1,54 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
 
+const Modal = ({ changeDrawerHere, changeModal, changeModalHere, timerValue, timerValueAddHere, timerValueRemoveHere }) => {
 
-class Modal extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showModal: false,
-            timerValue: this.props.timerValue,
-            open: false
-        };
+    const handleClose = () => {
 
-        this.timer = this.timer.bind(this);
-    }
+        changeModalHere();
+        changeDrawerHere();
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({ timerValue: nextProps.timerValue });
-    }
-
-    handleOpen = () => {
-        this.setState({ open: true });
     };
 
-    handleClose = () => {
-        this.props.closeDrawer();
-        this.setState({ open: false });
-    };
+    const actions = [
 
-    timer(value) {
-        var timerValue = this.state.timerValue;
+        <FlatButton
+            label="Submit"
+            primary={true}
+            //keyboardFocused={true}
+            onClick={handleClose}
+        />,
+    ];
 
-        if (this.state.timerValue + value > 0) {
-            this.props.handler(value);
-        
-            this.setState({
-                timerValue: timerValue + value
-            });
-        }
+    return (
 
+        <div>
 
-    }
+            <MenuItem onClick={() => changeModalHere()}>Set timer</MenuItem>
 
-    render() {
-
-        const actions = [
-            // <FlatButton
-            //     label="Cancel"
-            //     primary={true}
-            //     onClick={this.handleClose}
-            // />,
-            <FlatButton
-                label="Submit"
-                primary={true}
-                //keyboardFocused={true}
-                onClick={this.handleClose}
-            />,
-        ];
-
-
-        return (
-            <div>
-
-                {/* <IconButton iconStyle={{ fill: "white" }}>
-                    <MoreVertIcon
-                        onClick={this.handleOpen}
-                    />
-                </IconButton> */}
-                {/* <FlatButton onClick={this.handleOpen}>Settings</FlatButton> */}
-                <MenuItem onClick={this.handleOpen}>Set timer</MenuItem>
-
-                <Dialog
-                    title="Set timer value"
-                    actions={actions}
-                    modal={false}
-                    open={this.state.open}
-                    onRequestClose={this.handleClose}
-                >
-                    <div className="settingsContainer">
-                        <div>
-                            <h2> {this.state.timerValue}</h2>
-                        </div>
-                        <div>
-                            <RaisedButton onClick={this.timer.bind(this, -1)}>Timer -</RaisedButton>
-                            <RaisedButton onClick={this.timer.bind(this, 1)}>Timer +</RaisedButton>
-                        </div>
+            <Dialog
+                title="Set timer value"
+                actions={actions}
+                modal={false}
+                open={changeModal}
+                onRequestClose={() => changeModalHere()}
+            >
+                <div className="settingsContainer">
+                    <div>
+                        <h2> {timerValue}</h2>
                     </div>
-                </Dialog>
-            </div>
-        );
+                    <div>
+                        <RaisedButton onClick={() => timerValueRemoveHere()}>Timer -</RaisedButton>
+                        <RaisedButton onClick={() => timerValueAddHere()}>Timer +</RaisedButton>
+                    </div>
+                </div>
+            </Dialog>
+        </div>
+    );
 
-    }
-};
+}
 
 export default Modal;
