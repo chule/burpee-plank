@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
@@ -16,8 +14,11 @@ import pick from 'lodash/pick';
 import { auth, database, googleAuthProvider } from './components/firebase';
 
 import Bar from "./components/Bar";
-import Modal from "./components/Modal";
+// import Modal from "./components/Modal";
 import './App.css';
+
+import AppBarContainer from "./containers/AppBarContainer";
+import DrawerContainer from "./containers/DrawerContainer";
 
 const muiTheme = getMuiTheme({
   // palette: {
@@ -199,7 +200,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
 
-          <AppBar
+          {/* <AppBar
             title="Burpee plank timer"
             titleStyle={{ textAlign: "left" }}
             onLeftIconButtonClick={this.handleToggle}
@@ -209,7 +210,9 @@ class App extends Component {
 
                 : <FlatButton label="Sign in" onClick={() => auth.signInWithPopup(googleAuthProvider)} />
             }
-          />
+          /> */}
+
+          <AppBarContainer />
 
           <div className="mainContent" style={{ backgroundColor: bgColor }}>
             <div className="mainConfig">
@@ -243,7 +246,7 @@ class App extends Component {
             </div>
           </div>
 
-          <Drawer
+          {/* <Drawer
             docked={false}
             open={this.state.open}
             onRequestChange={(open) => this.setState({ open })}
@@ -260,7 +263,8 @@ class App extends Component {
 
             <MenuItem onClick={this.handleClose}>Close drawer</MenuItem>
 
-          </Drawer>
+          </Drawer> */}
+          <DrawerContainer />
 
         </div>
       </MuiThemeProvider >
