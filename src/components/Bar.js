@@ -11,11 +11,9 @@ class Bar extends Component {
     componentDidMount() {
         this.d3Graph = d3.select(ReactDOM.findDOMNode(this.refs.graph));
         this.createGraph(this.props.timerValue);
-        console.log(this.props.timerValue)
     }
 
     componentDidUpdate() {
-        console.log(this.props.currentTime)
         if (this.props.currentTime === "not_set") {
             this.createGraph(this.props.timerValue);
         } else {
@@ -29,6 +27,7 @@ class Bar extends Component {
     }
 
     createGraph(data0) {
+
 
         let data = data0;
 
