@@ -2,7 +2,9 @@ import React from "react";
 import RaisedButton from 'material-ui/RaisedButton';
 import Bar from "./Bar";
 
-const MainContentContainer = ({timerValue}) => {
+const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere }) => {
+
+    console.log(timerStarted)
     return (
         <div className="mainContent" style={{ backgroundColor: "white" }/*{ backgroundColor: bgColor }*/}>
             <div className="mainConfig">
@@ -25,7 +27,7 @@ const MainContentContainer = ({timerValue}) => {
                         <Bar className="bar" width="200" height="15" data={this.state.timer} timerValue={this.state.timerValue} />
                     } */}
 
-<Bar className="bar" width="200" height="15" data={timerValue} timerValue={timerValue} />
+                    <Bar className="bar" width="200" height="15" data={timerValue} timerValue={timerValue} />
 
 
                 </div>
@@ -34,8 +36,11 @@ const MainContentContainer = ({timerValue}) => {
                 <RaisedButton
                     buttonStyle={{ height: 150, width: 150 }}
                     label="Add one!"
-                    onClick={() => { console.log("start timer")}} // this.buttonClick
-                    style={{margin: 12}}
+                    onClick={() => {
+                        console.log("start timer")
+                        timerStartedHere();
+                    }} // this.buttonClick
+                    style={{ margin: 12 }}
                     disabled={false} //this.state.runTimer
                 />
             </div>

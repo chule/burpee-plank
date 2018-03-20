@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
-import { changeDrawerAction, changeModalAction, timerValueAdd, timerValueRemove } from "../actions";
+import { changeDrawerAction, changeModalAction, 
+    timerValueAdd, timerValueRemove, timerStarted } from "../actions";
 import MainContentComponent from "../components/MainContentComponent";
 
 const mapStateToProps = state => {
     return {
         changeDrawer: state.changeDrawer,
         changeModal: state.changeModal,
-        timerValue: state.timerValue
+        timerValue: state.timerValue,
+        timerStarted: state.timerStarted
     };
 };
 
@@ -23,6 +25,9 @@ const mapDispatchToProps = dispatch => {
         },
         timerValueRemoveHere: () => {
             dispatch(timerValueRemove());
+        },
+        timerStartedHere: () => {
+            dispatch(timerStarted());
         }         
     }
 }

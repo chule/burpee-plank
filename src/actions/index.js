@@ -3,8 +3,7 @@ export const CHANGE_MODAL = "CHANGE_MODAL";
 export const TIMER_VALUE_ADD = "TIMER_VALUE_ADD";
 export const TIMER_VALUE_REMOVE = "TIMER_VALUE_REMOVE";
 
-export const LOGGED_IN = "LOGGED_IN";
-export const LOGGED_OUT = "LOGGED_OUT";
+export const TIMER_CHANGE = "TIMER_CHANGE";
 
 export const changeDrawerAction = () => {
     return {
@@ -27,6 +26,12 @@ export const timerValueAdd = () => {
 export const timerValueRemove = () => {
     return {
         type: TIMER_VALUE_REMOVE
+    }
+}
+
+export const timerStarted = () => {
+    return {
+        type: TIMER_CHANGE
     }
 }
 
