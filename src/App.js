@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import AppBar from 'material-ui/AppBar';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
+// import AppBar from 'material-ui/AppBar';
+// import RaisedButton from 'material-ui/RaisedButton';
+// import FlatButton from 'material-ui/FlatButton';
+// import Drawer from 'material-ui/Drawer';
+// import MenuItem from 'material-ui/MenuItem';
 import { blueGrey600 } from 'material-ui/styles/colors';
 //import Button from "./components/Button";
 
-import pick from 'lodash/pick';
+// import pick from 'lodash/pick';
 
-import { auth, database, googleAuthProvider } from './components/firebase';
+// import { auth, database, googleAuthProvider } from './components/firebase';
 
-import Bar from "./components/Bar";
+// import Bar from "./components/Bar";
 // import Modal from "./components/Modal";
 import './App.css';
 
@@ -31,9 +31,9 @@ const muiTheme = getMuiTheme({
   }
 });
 
-const buttonStyle = {
-  margin: 12,
-};
+// const buttonStyle = {
+//   margin: 12,
+// };
 
 class App extends Component {
   constructor(props) {
@@ -57,69 +57,69 @@ class App extends Component {
 
     this.todaysDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
 
-    this.buttonClick = this.buttonClick.bind(this);
-    this.buttonClickReset = this.buttonClickReset.bind(this);
-    this.handler = this.handler.bind(this);
+    // this.buttonClick = this.buttonClick.bind(this);
+    // this.buttonClickReset = this.buttonClickReset.bind(this);
+    // this.handler = this.handler.bind(this);
 
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-    this.changeColor = this.changeColor.bind(this);
+    // this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    // this.changeColor = this.changeColor.bind(this);
 
-    this.signOut = this.signOut.bind(this);
+    // this.signOut = this.signOut.bind(this);
   }
 
-  componentWillMount() {
+  // componentWillMount() {
 
-    auth.onAuthStateChanged((user) => {
+  //   auth.onAuthStateChanged((user) => {
 
-      this.setState({ user });
+  //     this.setState({ user });
 
-      if (user) {
+  //     if (user) {
 
-        database.ref(`users/${user.uid}`).once("value", snapshot => {
-          const email = snapshot.child("email").exists();
-          if (email) { // if use exist
+  //       database.ref(`users/${user.uid}`).once("value", snapshot => {
+  //         const email = snapshot.child("email").exists();
+  //         if (email) { // if use exist
 
-            if (snapshot.child(`exercises/${this.todaysDate}`).exists()) {
-              let serverRepetitions = snapshot.child(`exercises/${this.todaysDate}/repetitions`).val();
-              let serverTimer = snapshot.child(`exercises/${this.todaysDate}/timer`).val();
+  //           if (snapshot.child(`exercises/${this.todaysDate}`).exists()) {
+  //             let serverRepetitions = snapshot.child(`exercises/${this.todaysDate}/repetitions`).val();
+  //             let serverTimer = snapshot.child(`exercises/${this.todaysDate}/timer`).val();
 
-              this.setState({ serverRepetitions: serverRepetitions, timerValue: serverTimer, timer: serverTimer });
-            } else {
-              database.ref(`users/${user.uid}/exercises/${this.todaysDate}`)
-                .set({ repetitions: this.state.number, timer: this.state.timerValue, time: Date.now() });
-            }
+  //             this.setState({ serverRepetitions: serverRepetitions, timerValue: serverTimer, timer: serverTimer });
+  //           } else {
+  //             database.ref(`users/${user.uid}/exercises/${this.todaysDate}`)
+  //               .set({ repetitions: this.state.number, timer: this.state.timerValue, time: Date.now() });
+  //           }
 
-          } else { // add user to database
-            database.ref('users')
-              .child(user.uid)
-              .set(pick(user, ['displayName', 'email', 'uid', 'photoURL']));
+  //         } else { // add user to database
+  //           database.ref('users')
+  //             .child(user.uid)
+  //             .set(pick(user, ['displayName', 'email', 'uid', 'photoURL']));
 
-            database.ref(`users/${user.uid}/exercises/${this.todaysDate}`)
-              .set({ repetitions: this.state.number, timer: this.state.timerValue, time: Date.now() });
+  //           database.ref(`users/${user.uid}/exercises/${this.todaysDate}`)
+  //             .set({ repetitions: this.state.number, timer: this.state.timerValue, time: Date.now() });
 
-          }
-        });
-      }
+  //         }
+  //       });
+  //     }
 
-    });
-  }
+  //   });
+  // }
 
   changeColor() {
     this.setState({ color_red: !this.state.color_red })
   }
 
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
+  // componentDidMount() {
+  //   this.updateWindowDimensions();
+  //   window.addEventListener('resize', this.updateWindowDimensions);
+  // }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
   }
 
-  updateWindowDimensions() {
-    this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
-  }
+  // updateWindowDimensions() {
+  //   this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
+  // }
 
   handleToggle = () => this.setState({ open: !this.state.open });
 
@@ -146,26 +146,26 @@ class App extends Component {
     }, 1000);
   }
 
-  buttonClick(e) {
-    e.preventDefault();
-    const currentNum = this.state.number + 1;
-    const timerValue = this.state.timerValue;
-    this.setState({
-      number: currentNum,
-      timer: timerValue,
-      runTimer: true
-    });
-    this.changeColor();
-    this.timer();
+  // buttonClick(e) {
+  //   e.preventDefault();
+  //   const currentNum = this.state.number + 1;
+  //   const timerValue = this.state.timerValue;
+  //   this.setState({
+  //     number: currentNum,
+  //     timer: timerValue,
+  //     runTimer: true
+  //   });
+  //   this.changeColor();
+  //   this.timer();
 
-    const repetitions = this.state.serverRepetitions + currentNum;
+  //   const repetitions = this.state.serverRepetitions + currentNum;
 
 
-    if (this.state.user) {
-      database.ref(`users/${this.state.user.uid}/exercises/${this.todaysDate}`)
-        .set({ repetitions: repetitions, timer: timerValue, time: Date.now() });
-    }
-  }
+  //   if (this.state.user) {
+  //     database.ref(`users/${this.state.user.uid}/exercises/${this.todaysDate}`)
+  //       .set({ repetitions: repetitions, timer: timerValue, time: Date.now() });
+  //   }
+  // }
 
   buttonClickReset(e) {
     if (e) {
@@ -182,19 +182,19 @@ class App extends Component {
 
   }
 
-  signOut(e) {
-    if (e) {
-      e.preventDefault();
-    }
-    auth.signOut();
-    this.buttonClickReset();
-  }
+  // signOut(e) {
+  //   if (e) {
+  //     e.preventDefault();
+  //   }
+  //   auth.signOut();
+  //   this.buttonClickReset();
+  // }
 
   render() {
 
-    let bgColor = this.state.color_red ? "red" : "white";
-    let pColor = this.state.color_red ? "white" : "#55585a";
-    const { user } = this.state;
+    // let bgColor = this.state.color_red ? "red" : "white";
+    // let pColor = this.state.color_red ? "white" : "#55585a";
+    // const { user } = this.state;
 
     return (
 
