@@ -1,10 +1,40 @@
 import React from "react";
 import RaisedButton from 'material-ui/RaisedButton';
-import Bar from "./Bar";
+import BarContainer from "../containers/BarContainer";
 
-const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere }) => {
+const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere,
+    changeCurrentTimeHere }) => {
 
-    console.log(timerStarted)
+
+
+    //changeCurrentTimeHere(timerValue)    
+    let currentTimerInterval;
+    let currentTimerValue;
+
+    if (timerStarted) {
+        currentTimerValue = timerValue;
+        //changeCurrentTimeHere(timerValue);
+        currentTimerInterval = setInterval(() => {
+
+            currentTimerValue = currentTimerValue - 1;
+            changeCurrentTimeHere(currentTimerValue);
+
+            if (currentTimerValue === 0) {
+                clearInterval(currentTimerInterval);
+                changeCurrentTimeHere(timerValue);
+
+            }
+        }, 1000)
+
+
+    } else {
+        if (currentTimerInterval) {
+            clearInterval(currentTimerInterval);
+        }
+    }
+
+
+
     return (
         <div className="mainContent" style={{ backgroundColor: "white" }/*{ backgroundColor: bgColor }*/}>
             <div className="mainConfig">
@@ -27,7 +57,7 @@ const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere }) =>
                         <Bar className="bar" width="200" height="15" data={this.state.timer} timerValue={this.state.timerValue} />
                     } */}
 
-                    <Bar className="bar" width="200" height="15" data={timerValue} timerValue={timerValue} />
+                    <BarContainer className="bar" width="200" height="15" data={timerValue} timerValue={timerValue} />
 
 
                 </div>
@@ -38,6 +68,11 @@ const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere }) =>
                     label="Add one!"
                     onClick={() => {
                         console.log("start timer")
+                        if (timerStarted) {
+                            clearInterval(currentTimerInterval);
+                            changeCurrentTimeHere(timerValue);
+                        }
+
                         timerStartedHere();
                     }} // this.buttonClick
                     style={{ margin: 12 }}

@@ -4,6 +4,8 @@ export const TIMER_VALUE_ADD = "TIMER_VALUE_ADD";
 export const TIMER_VALUE_REMOVE = "TIMER_VALUE_REMOVE";
 
 export const TIMER_CHANGE = "TIMER_CHANGE";
+export const CHANGE_CURRENT_TIME = "CHANGE_CURRENT_TIME";
+
 
 export const changeDrawerAction = () => {
     return {
@@ -32,6 +34,13 @@ export const timerValueRemove = () => {
 export const timerStarted = () => {
     return {
         type: TIMER_CHANGE
+    }
+}
+
+export const currentTime = (time) => {
+    return {
+        type: CHANGE_CURRENT_TIME,
+        payload: time
     }
 }
 

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { CHANGE_DRAWER, CHANGE_MODAL, TIMER_VALUE_ADD, TIMER_VALUE_REMOVE, 
-    LOGGED_IN, LOGGED_OUT, TIMER_CHANGE } from "../actions";
+    LOGGED_IN, LOGGED_OUT, TIMER_CHANGE, CHANGE_CURRENT_TIME } from "../actions";
 
 
 import authReducer from "./auth.js";
@@ -49,6 +49,16 @@ const timerStarted = (state = false, action) => {
     }
 }
 
+const changeCurrentTime = (state = 0, action) => {
+    switch (action.type) {
+        case CHANGE_CURRENT_TIME:
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+
 // const loggedValue = (state = false, action) => {
 //     switch (action.type) {
 //         case LOGGED_IN:
@@ -66,7 +76,8 @@ const rootReducer = combineReducers({
     changeModal,
     timerValue,
     authReducer,
-    timerStarted
+    timerStarted,
+    changeCurrentTime
 })
 
 
