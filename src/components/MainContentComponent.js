@@ -5,8 +5,6 @@ import BarContainer from "../containers/BarContainer";
 const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere,
     changeCurrentTimeHere }) => {
 
-
-
     //changeCurrentTimeHere(timerValue)    
     let currentTimerInterval;
     let currentTimerValue;
@@ -22,7 +20,7 @@ const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere,
             if (currentTimerValue === 0) {
                 clearInterval(currentTimerInterval);
                 changeCurrentTimeHere(timerValue);
-
+                timerStartedHere();
             }
         }, 1000)
 
@@ -57,7 +55,8 @@ const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere,
                         <Bar className="bar" width="200" height="15" data={this.state.timer} timerValue={this.state.timerValue} />
                     } */}
 
-                    <BarContainer className="bar" width="200" height="15" data={timerValue} timerValue={timerValue} />
+                    <BarContainer className="bar" width="200" height="15"  />
+                    {/* data={timerValue} timerValue={timerValue}  */}
 
 
                 </div>
@@ -65,15 +64,17 @@ const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere,
             <div className="mainButton">
                 <RaisedButton
                     buttonStyle={{ height: 150, width: 150 }}
-                    label="Add one!"
+                    label={timerStarted ? "Reset" : "Add one!"}
                     onClick={() => {
-                        console.log("start timer")
+
+                        timerStartedHere();
+                        console.log("start timer",timerStarted)
                         if (timerStarted) {
                             clearInterval(currentTimerInterval);
                             changeCurrentTimeHere(timerValue);
                         }
 
-                        timerStartedHere();
+                        
                     }} // this.buttonClick
                     style={{ margin: 12 }}
                     disabled={false} //this.state.runTimer

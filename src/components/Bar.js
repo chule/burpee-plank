@@ -6,18 +6,17 @@ import * as d3 from "d3";
 class Bar extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            currentTimerValue: this.props.timerValue
-        };
     }
 
     componentDidMount() {
         this.d3Graph = d3.select(ReactDOM.findDOMNode(this.refs.graph));
         this.createGraph(this.props.timerValue);
+        console.log(this.props.timerValue)
     }
 
     componentDidUpdate() {
-        if (!this.props.currentTime) {
+        console.log(this.props.currentTime)
+        if (this.props.currentTime === "not_set") {
             this.createGraph(this.props.timerValue);
         } else {
             this.createGraph(this.props.currentTime);
