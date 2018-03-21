@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import * as d3 from "d3";
 //import map from 'lodash/map';
 
 class Bar extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
-        this.d3Graph = d3.select(ReactDOM.findDOMNode(this.refs.graph));
+        this.d3Graph = d3.select(this.graph);
         this.createGraph(this.props.timerValue);
+
+        
     }
 
     componentDidUpdate() {
@@ -19,7 +17,6 @@ class Bar extends Component {
         } else {
             this.createGraph(this.props.currentTime);
         }
-
     }
 
     removeUnderscore(text) {
@@ -28,15 +25,13 @@ class Bar extends Component {
 
     createGraph(data0) {
 
+        console.log(data0)
 
         let data = data0;
-
-        //console.log(this.props)
 
         var svg = this.d3Graph,
             width = this.props.width,
             height = this.props.height;
-
 
         var scaleX = d3.scaleLinear()
             .domain([0, this.props.timerValue])
@@ -58,18 +53,21 @@ class Bar extends Component {
 
     }
 
-
-
     render() {
         return (
             <div>
                 <svg width={this.props.width} height={this.props.height}>
-                    <g ref='graph' />
+                    <g ref={node => { this.graph = node; }} />
                 </svg>
             </div>
-
         );
     }
 }
+
+Bar.defaultProps = {
+    currentTime: 10,
+    timerValue: 10,
+}
+
 
 export default Bar;

@@ -3,7 +3,7 @@ import {
     changeDrawerAction, changeModalAction,
     timerValueAdd, timerValueRemove, timerStarted
 } from "../actions";
-import Bar from "../components/BarComponent";
+import CenterTextComponent from "../components/CenterTextComponent";
 
 const mapStateToProps = state => {
 
@@ -36,4 +36,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Bar);
+export default connect(mapStateToProps, mapDispatchToProps)(CenterTextComponent);

@@ -1,6 +1,7 @@
 import React from "react";
 import RaisedButton from 'material-ui/RaisedButton';
 import BarContainer from "../containers/BarContainer";
+import CenterTextContainer from "../containers/CenterTextContainer";
 
 const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere,
     changeCurrentTimeHere }) => {
@@ -38,15 +39,7 @@ const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere,
             <div className="mainConfig">
 
                 <div>
-                    <p style={{ color: "#55585a" }}>
-                        Repetitions today: to do
-                        {/* {this.state.number + this.state.serverRepetitions} */}
-                        <br />
-                        Timer duration: {timerValue}
-                        <br />
-                        Timer: to do
-                        {/* {this.state.timer} */}
-                    </p>
+                    <CenterTextContainer />
 
                     {/* {this.state.windowWidth > 768 
                     ?
