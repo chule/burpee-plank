@@ -8,7 +8,9 @@ const DrawerComponent = ({changeDrawer, changeDrawerHere}) => {
         <Drawer
             docked={false}
             open={changeDrawer}
-            onRequestChange={ () => changeDrawerHere() }
+            onRequestChange={ () => {
+                changeDrawerHere() 
+            }}
         >
             {/* <Modal
                 onClick={this.appBarClick}
