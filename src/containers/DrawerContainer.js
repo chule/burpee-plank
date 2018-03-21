@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
-import { changeDrawerAction } from "../actions";
+import { changeDrawerAction, timerStarted } from "../actions";
 import DrawerComponent from "../components/DrawerComponent";
 
 const mapStateToProps = state => {
     return {
-        changeDrawer: state.changeDrawer
+        changeDrawer: state.changeDrawer,
+        timerStarted: state.timerStarted,
     };
 };
 
@@ -12,6 +13,9 @@ const mapDispatchToProps = dispatch => {
     return {
         changeDrawerHere: () => {
             dispatch(changeDrawerAction());
+        },
+        timerStartedHere: () => {
+            dispatch(timerStarted());
         }
     }
 }

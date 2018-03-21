@@ -4,7 +4,8 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
 
-const Modal = ({ changeDrawerHere, changeModal, changeModalHere, timerValue, timerValueAddHere, timerValueRemoveHere }) => {
+const Modal = ({ changeDrawerHere, changeModal, changeModalHere,
+    timerValue, timerValueAddHere, timerValueRemoveHere, timerStartedHere, timerStarted }) => {
 
     const handleClose = () => {
 
@@ -22,6 +23,7 @@ const Modal = ({ changeDrawerHere, changeModal, changeModalHere, timerValue, tim
             onClick={handleClose}
         />,
     ];
+
 
     return (
 
