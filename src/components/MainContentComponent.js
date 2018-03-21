@@ -18,7 +18,7 @@ const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere,
             currentTimerValue = currentTimerValue - 1;
             changeCurrentTimeHere(currentTimerValue);
 
-            if (currentTimerValue === 0) {
+            if (currentTimerValue < 0) {
                 clearInterval(currentTimerInterval);
                 changeCurrentTimeHere(timerValue);
                 timerStartedHere();

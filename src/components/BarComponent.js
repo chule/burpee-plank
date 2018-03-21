@@ -25,7 +25,9 @@ class Bar extends Component {
 
     createGraph(data0) {
 
-        console.log(data0)
+        if (data0 < 0) {
+            data0 = 0;
+        }
 
         let data = data0;
 
