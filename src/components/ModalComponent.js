@@ -5,13 +5,13 @@ import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
 
 const Modal = ({ changeDrawerHere, changeModal, changeModalHere,
-    timerValue, timerValueAddHere, timerValueRemoveHere, timerStartedHere, timerStarted }) => {
+    timerValue, timerValueAddHere, timerValueRemoveHere, timerStartedHere, timerStarted, changeCurrentTimeHere }) => {
 
     const handleClose = () => {
 
         changeModalHere();
         changeDrawerHere();
-
+        changeCurrentTimeHere(timerValue);
     };
 
     const actions = [

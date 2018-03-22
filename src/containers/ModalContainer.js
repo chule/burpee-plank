@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { changeDrawerAction, changeModalAction, timerValueAdd, timerValueRemove, timerStarted } from "../actions";
+import { changeDrawerAction, changeModalAction, timerValueAdd, timerValueRemove, timerStarted, currentTime } from "../actions";
 import ModalComponent from "../components/ModalComponent";
 
 const mapStateToProps = state => {
@@ -27,7 +27,10 @@ const mapDispatchToProps = dispatch => {
         },
         timerStartedHere: () => {
             dispatch(timerStarted());
-        }        
+        },
+        changeCurrentTimeHere: (time) => {
+            dispatch(currentTime(time));
+        }           
     }
 }
 
