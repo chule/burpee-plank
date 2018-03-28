@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import {
     CHANGE_DRAWER, CHANGE_MODAL, TIMER_VALUE_ADD, TIMER_VALUE_REMOVE,
-    TIMER_CHANGE, CHANGE_CURRENT_TIME
+    TIMER_CHANGE, CHANGE_CURRENT_TIME, REPETITION_ADD, REPETITION_RESET
 } from "../actions";
 
 
@@ -60,6 +60,18 @@ const changeCurrentTime = (state = "not_set", action) => {
     }
 }
 
+const repetitions = (state = 0, action) => {
+    switch (action.type) {
+        case REPETITION_ADD:
+            return state + 1;
+        case REPETITION_RESET:
+            return 0;
+        default:
+            return state;
+    }
+}
+
+
 
 // const loggedValue = (state = false, action) => {
 //     switch (action.type) {
@@ -79,7 +91,8 @@ const rootReducer = combineReducers({
     timerValue,
     authReducer,
     timerStarted,
-    changeCurrentTime
+    changeCurrentTime,
+    repetitions
 })
 
 

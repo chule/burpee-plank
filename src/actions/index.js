@@ -5,7 +5,8 @@ export const TIMER_VALUE_REMOVE = "TIMER_VALUE_REMOVE";
 
 export const TIMER_CHANGE = "TIMER_CHANGE";
 export const CHANGE_CURRENT_TIME = "CHANGE_CURRENT_TIME";
-
+export const REPETITION_ADD = "REPETITION_ADD";
+export const REPETITION_RESET = "REPETITION_RESET";
 
 export const changeDrawerAction = () => {
     return {
@@ -43,6 +44,19 @@ export const currentTime = (time) => {
         payload: time
     }
 }
+
+export const repetitonAdd = () => {
+    return {
+        type: REPETITION_ADD
+    }
+}
+
+export const repetitonReset = () => {
+    return {
+        type: REPETITION_RESET
+    }
+}
+
 
 // let timer = null;
 // const start = () => (dispatch) => {

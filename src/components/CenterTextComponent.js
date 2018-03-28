@@ -1,9 +1,9 @@
 import React from "react";
 
-const CenterText = ({ timerValue, timerStarted, currentTime }) => {
+const CenterText = ({ timerValue, timerStarted, currentTime, repetitions }) => {
     return (
         <p style={{ color: "#55585a" }}>
-            Repetitions today: repetitions to do
+            Repetitions today: {repetitions}
         {/* {this.state.number + this.state.serverRepetitions} */}
             <br />
             Timer duration: {timerValue}
