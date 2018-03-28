@@ -4,7 +4,7 @@ import BarContainer from "../containers/BarContainer";
 import CenterTextContainer from "../containers/CenterTextContainer";
 
 const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere,
-    changeCurrentTimeHere }) => {
+    changeCurrentTimeHere, repetitonAddHere }) => {
 
     //changeCurrentTimeHere(timerValue)    
     let currentTimerInterval;
@@ -22,6 +22,7 @@ const MainContentContainer = ({ timerValue, timerStarted, timerStartedHere,
                 clearInterval(currentTimerInterval);
                 changeCurrentTimeHere(timerValue);
                 timerStartedHere();
+                repetitonAddHere();
             }
         }, 1000)
 

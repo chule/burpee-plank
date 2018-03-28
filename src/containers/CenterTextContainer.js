@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
     changeDrawerAction, changeModalAction,
-    timerValueAdd, timerValueRemove, timerStarted, repetitonAdd, repetitonReset
+    timerValueAdd, timerValueRemove, timerStarted, repetitonAdd
 } from "../actions";
 import CenterTextComponent from "../components/CenterTextComponent";
 
@@ -36,9 +36,6 @@ const mapDispatchToProps = dispatch => {
         },
         repetitonAddHere: () => {
             dispatch(repetitonAdd());
-        },
-        repetitonResetHere: () => {
-            dispatch(repetitonReset());
         }
     }
 };
